@@ -1,0 +1,27 @@
+<!-- product-list.component.html -->
+<div class="container mt-4">
+    <app-product-form [product]="productToEdit || { title: '', price: 0, quantity: 0 }"
+        (productUpdated)="onProductUpdated()"></app-product-form>
+    <h2 class="mb-3">Product List</h2>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.title }}</td>
+                <td>${{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>
+                    <button (click)="editProduct(product)" class="btn btn-primary btn-sm me-2">Edit</button>
+                    <button (click)="deleteProduct(product)" class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
